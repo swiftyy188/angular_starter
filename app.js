@@ -10,7 +10,13 @@ var router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
 
-
+//mongoose
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/angular_starter', {promiseLibrary:
+require('bluebird') })
+	.then(() => console.log('connection successful'))
+	.catch((err) => console.error(err))
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next){
